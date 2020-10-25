@@ -21,7 +21,7 @@ const importData = async () => {
         const adminUser = createdUsers[0]._id
 
         const sampleProducts = products.map(p => {
-            return { ...p, user: adminUser}
+            return {...p, user: adminUser}
         })
         await Product.insertMany(sampleProducts)
         console.log('Data Imported!')
@@ -46,7 +46,7 @@ const destroyData = async () => {
     }
 }
 
-if(process.argv[2]=== '-d') {
+if (process.argv[2] === '-d') {
     destroyData()
 } else {
     importData()
