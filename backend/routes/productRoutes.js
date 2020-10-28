@@ -1,39 +1,9 @@
 import express from 'express'
-import Product from "../models/productModel.js";
-import asyncHandler from 'express-async-handler'
+import {getProductById, getProducts} from "../controllers/productController.js";
 
 const router = express.Router()
 
-// @desc    Fetch all products
-// @route   GET /api/products
-// @access  Public
-router.get('/', asyncHandler(async (req, res) => {
-    const products = await Product.find({})
-    res.send(products)
-}))
-
-// router.route('/').get((req, res)=>{
-//     Product.find()
-//         .then(products => res.json(products))
-// })
-
-
-// @desc    Fetch a single product
-// @route   GET /api/products/:id
-// @access  Public
-router.get('/:id', asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id)
-    if (product) {
-        res.send(product)
-    } else {
-        res.status(404)
-        throw new Error('Product not found')
-    }
-}))
-
-// router.route('/:id').get((req, res) => {
-//     Product.findById(req.params.id)
-//         .then(product => res.json(product))
-// })
+router.route('/').get(getProducts)
+router.route('/:id').get(getProductById)
 
 export default router
