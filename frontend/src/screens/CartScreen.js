@@ -5,7 +5,7 @@ import Message from "../components/Message";
 import {Button, Card, Col, Form, Image, ListGroup, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-const CartScreen = ({match, location}) => {
+const CartScreen = ({match, location, history}) => {
     const productId = match.params.id
 
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
@@ -26,26 +26,30 @@ const CartScreen = ({match, location}) => {
         dispatch(removeFromCart(id))
     }
 
+    const checkoutHandler = () => {
+        history.push('/login?redirect=shipping')
+    }
+
     return <Row>
         <Col md={8}>
             <h1>Shopping Cart</h1>
             {cartItems.length === 0 ? <Message>Your cart is empty <Link to='/'> Go Back</Link></Message> : (
                 <ListGroup variant='flush'>
                     {cartItems.map(item => (
-                        <ListGroup.Item key={item.product}>
+                        <ListGroup.Item key={item.productId}>
                             <Row>
                                 <Col md={2}>
                                     <Image src={item.image} alt={item.name} fluid rounded/>
                                 </Col>
                                 <Col md={3}>
-                                    <Link to={`/products/${item.product}`}>{item.name}</Link>
+                                    <Link to={`/products/${item.id}`}>{item.name}</Link>
                                 </Col>
                                 <Col md={2}>${item.price}</Col>
                                 <Col md={2}>
                                     <Form.Control
                                         as={'select'}
                                         value={item.qty}
-                                        onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
+                                        onChange={(e) => dispatch(addToCart(item.productId, Number(e.target.value)))}
                                     >
                                         {
                                             [...Array(item.countInStock).keys()].map(
@@ -59,7 +63,7 @@ const CartScreen = ({match, location}) => {
                                 </Col>
                                 <Col md={2}>
                                     <Button type='button' variant='light'
-                                            onClick={() => removeFromCartHandler(item.product)}>
+                                            onClick={() => removeFromCartHandler(item.productId)}>
                                         <i className='fas fa-trash'/>
                                     </Button>
                                 </Col>
@@ -77,7 +81,13 @@ const CartScreen = ({match, location}) => {
                         ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <Button>checkout</Button>
+                        <Button
+                            type='button'
+                            className='btn-block'
+                            disabled={cartItems.length === 0}
+                            onClick={checkoutHandler}>
+                            checkout
+                        </Button>
                     </ListGroup.Item>
                 </ListGroup>
             </Card>

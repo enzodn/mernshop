@@ -14,7 +14,7 @@ const Product = ({product}) => {
 
             <Card.Body>
                 <Link to={`/product/${product._id}`}>
-                    <Card.Title className='text-dark'>
+                    <Card.Title>
                         <strong>{product.name}</strong>
                     </Card.Title>
                 </Link>
