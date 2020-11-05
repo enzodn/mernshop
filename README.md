@@ -2,9 +2,7 @@
 # Mernshop
 
 > eCommerce platform built with the MERN stack and Redux.
-
-
-
+----------------------------------------------------------------
 <p float="left">
   <img src="https://github.com/enzodn/mernshop/blob/main/uploads/screenshot.png" height="350px" />
   <img height="400px" hspace="30px"/>
@@ -27,7 +25,7 @@ user
 david@example.com (Customer)
 david
 ```
-
+----------------------------------------------------------------
 ## Features
 
 - [x] Full featured shopping cart
@@ -43,6 +41,7 @@ david
 - [x] PayPal / credit card integration
 - [x] Database seeder (products & users)
 
+----------------------------------------------------------------
 ## Technologies 
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
@@ -51,9 +50,7 @@ david
 - [MongoDB](https://www.mongodb.com/)
 - [React Bootstrap](https://react-bootstrap.github.io/)
 
-
-
-
+----------------------------------------------------------------
 # Usage
 
 ### Env Variables
@@ -97,6 +94,6 @@ npm run data:import
 # Destroy data
 npm run data:destroy
 ```
-
+----------------------------------------------------------------
 ## License
 The MIT License
