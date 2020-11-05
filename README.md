@@ -6,9 +6,9 @@
 
 
 <p float="left">
-  <img src="https://github.com/enzodn/mernshop/blob/main/uploads/screenshot.png" height="400px" />
+  <img src="https://github.com/enzodn/mernshop/blob/main/uploads/screenshot.png" height="350px" />
   <img height="400px" hspace="30px"/>
-  <img src="https://github.com/enzodn/mernshop/blob/main/uploads/screenshot_mobile.jpg" height="400px"/> 
+  <img src="https://github.com/enzodn/mernshop/blob/main/uploads/screenshot_mobile.jpg" height="350px"/> 
 </p>
 
 
