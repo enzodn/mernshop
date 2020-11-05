@@ -18,6 +18,7 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
+import SearchBox from "./components/SearchBox";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
             <main className='py-3'>
                 <Container>
                     <Route path='/' component={HomeScreen} exact/>
+                    <Route path='/search/:keyword' component={HomeScreen}/>
                     <Route path='/product/:id' component={ProductScreen}/>
                     <Route path='/cart/:id?' component={CartScreen}/>
                     <Route path='/login' component={LoginScreen}/>
@@ -40,6 +42,7 @@ function App() {
                     <Route path='/admin/productlist' component={ProductListScreen}/>
                     <Route path='/admin/products/:id/edit' component={ProductEditScreen}/>
                     <Route path='/admin/orderlist' component={OrderListScreen}/>
+                    <Route path='/search/:keyword' component={SearchBox}/>
 
 
                 </Container>
